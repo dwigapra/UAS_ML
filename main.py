@@ -19,9 +19,11 @@ def svm_sub_menu():
     choice = st.sidebar.radio("Select Sub Menu", sub_menu)
 
     if choice == "Fish":
-         os.system('streamlit run RF/Fish/app.py')
+        if st.button("Run SVM -> Fish"):
+            #os.system('streamlit run SVM/Fish/app.py')
     elif choice == "Fruit":
-         os.system('streamlit run RF/Fish/app.py')
+        if st.button("Run SVM -> Fruit"):
+            #os.system('streamlit run SVM/Fruit/app.py')
 
 def rf_sub_menu():
     st.subheader("Random Forest")
@@ -31,9 +33,11 @@ def rf_sub_menu():
     choice = st.sidebar.radio("Select Sub Menu", sub_menu)
 
     if choice == "Fish":
-        os.system('streamlit run RF/Fish/app.py')
+        if st.button("Run Random Forest -> Fish"):
+            os.system('streamlit run RF/Fish/app.py')
     elif choice == "Fruit":
-        os.system('streamlit run RF/Fish/app.py')
+        if st.button("Run Random Forest -> Fruit"):
+            #os.system('streamlit run RF/Fruit/app.py')
 
 if __name__ == "__main__":
     main()
