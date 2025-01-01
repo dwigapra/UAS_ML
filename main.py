@@ -1,6 +1,5 @@
 import streamlit as st
-import subprocess
-import os
+import runpy
 
 def main():
     st.title("Main Menu")
@@ -23,10 +22,10 @@ def svm_sub_menu():
 
     if choice == "Fish":
         st.write("You selected SVM -> Fish.")
-        run_streamlit_app('RF/Fish/app.py')
+        # Add SVM Fish specific content or functionality here
     elif choice == "Fruit":
         st.write("You selected SVM -> Fruit.")
-        run_streamlit_app('RF/Fish/app.py')
+        # Add SVM Fruit specific content or functionality here
 
 def rf_sub_menu():
     st.subheader("Random Forest Menu")
@@ -37,17 +36,10 @@ def rf_sub_menu():
 
     if choice == "Fish":
         st.write("You selected Random Forest -> Fish.")
-        run_streamlit_app('RF/Fish/app.py')
+        runpy.run_path('RF/Fish/app.py')
     elif choice == "Fruit":
         st.write("You selected Random Forest -> Fruit.")
-        run_streamlit_app('RF/Fish/app.py')
-
-def run_streamlit_app(app_path):
-    if os.path.exists(app_path):
-        st.write(f"Running: {app_path}")
-        subprocess.Popen(['streamlit', 'run', app_path], shell=True)
-    else:
-        st.error(f"File not found: {app_path}")
+        # Add Random Forest Fruit specific content or functionality here
 
 if __name__ == "__main__":
     main()
