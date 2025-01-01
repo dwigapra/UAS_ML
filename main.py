@@ -20,10 +20,10 @@ def svm_sub_menu():
 
     if choice == "Fish":
         if st.button("Run SVM -> Fish"):
-            #os.system('streamlit run SVM/Fish/app.py')
+            #run_app('SVM/Fish/app.py')
     elif choice == "Fruit":
         if st.button("Run SVM -> Fruit"):
-            #os.system('streamlit run SVM/Fruit/app.py')
+            #run_app('SVM/Fruit/app.py')
 
 def rf_sub_menu():
     st.subheader("Random Forest")
@@ -34,10 +34,17 @@ def rf_sub_menu():
 
     if choice == "Fish":
         if st.button("Run Random Forest -> Fish"):
-            os.system('streamlit run RF/Fish/app.py')
+            run_app('RF/Fish/app.py')
     elif choice == "Fruit":
         if st.button("Run Random Forest -> Fruit"):
-            #os.system('streamlit run RF/Fruit/app.py')
+            #run_app('RF/Fruit/app.py')
+
+def run_app(app_path):
+    if os.path.exists(app_path):
+        os.system(f'streamlit run {app_path}')
+        st.success(f"Running: {app_path}")
+    else:
+        st.error(f"File not found: {app_path}")
 
 if __name__ == "__main__":
     main()
