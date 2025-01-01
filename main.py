@@ -19,9 +19,9 @@ def svm_sub_menu():
     choice = st.sidebar.radio("Select Sub Menu", sub_menu)
 
     if choice == "Fish":
-        # Add SVM Fish specific content or functionality here
+        runpy.run_path('RF/Fish/app.py')
     elif choice == "Fruit":
-        # Add SVM Fruit specific content or functionality here
+        runpy.run_path('RF/Fish/app.py')
 
 def rf_sub_menu():
     st.subheader("Random Forest")
@@ -31,9 +31,9 @@ def rf_sub_menu():
     choice = st.sidebar.radio("Select Sub Menu", sub_menu)
 
     if choice == "Fish":
-        runpy.run_path('RF/app.py')
+        runpy.run_path('RF/Fish/app.py')
     elif choice == "Fruit":
-        # Add Random Forest Fruit specific content or functionality here
+        runpy.run_path('RF/Fish/app.py')e
 
 if __name__ == "__main__":
     main()
