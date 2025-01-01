@@ -1,5 +1,6 @@
 import streamlit as st
 import runpy
+import subprocess
 
 def main():
     st.title("Main Menu")
@@ -36,7 +37,7 @@ def rf_sub_menu():
 
     if choice == "Fish":
         st.write("You selected Random Forest -> Fish.")
-        runpy.run_path('RF/Fish/app.py')
+        subprocess.run(["streamlit", "run", "RF/Fish/app.py"])
     elif choice == "Fruit":
         st.write("You selected Random Forest -> Fruit.")
         # Add Random Forest Fruit specific content or functionality here
