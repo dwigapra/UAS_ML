@@ -1,5 +1,6 @@
 import streamlit as st
-import runpy
+import subprocess
+import os
 
 def main():
     st.title("Main Menu")
@@ -36,10 +37,20 @@ def rf_sub_menu():
 
     if choice == "Fish":
         st.write("You selected Random Forest -> Fish.")
-        runpy.run_path('RF/Fish/app.py')
+        run_streamlit_app('RF/Fish/app.py')
     elif choice == "Fruit":
         st.write("You selected Random Forest -> Fruit.")
-        # Add Random Forest Fruit specific content or functionality here
+        run_streamlit_app('RF/Fish/app.py')
+
+def run_streamlit_app(app_path):
+    """
+    Function to run a Streamlit app using subprocess.
+    """
+    if os.path.exists(app_path):
+        st.write(f"Running: {app_path}")
+        subprocess.Popen(['streamlit', 'run', app_path], shell=True)
+    else:
+        st.error(f"File not found: {app_path}")
 
 if __name__ == "__main__":
     main()
