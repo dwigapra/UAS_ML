@@ -20,10 +20,10 @@ def svm_sub_menu():
 
     if choice == "Fish":
         if st.button("Run SVM -> Fish"):
-            #run_app('SVM/Fish/app.py')
+            run_app('RF/Fish/app.py')
     elif choice == "Fruit":
         if st.button("Run SVM -> Fruit"):
-            #run_app('SVM/Fruit/app.py')
+            run_app('RF/Fish/app.py')
 
 def rf_sub_menu():
     st.subheader("Random Forest")
@@ -37,7 +37,7 @@ def rf_sub_menu():
             run_app('RF/Fish/app.py')
     elif choice == "Fruit":
         if st.button("Run Random Forest -> Fruit"):
-            #run_app('RF/Fruit/app.py')
+            run_app('RF/Fish/app.py')
 
 def run_app(app_path):
     if os.path.exists(app_path):
