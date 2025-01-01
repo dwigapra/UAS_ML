@@ -1,7 +1,9 @@
 import streamlit as st
-import os
+import runpy
 
 def main():
+    st.title("Main Menu")
+
     # Main menu options
     menu = ["SVM", "Random Forest"]
     choice = st.sidebar.selectbox("Select Main Menu", menu)
@@ -12,39 +14,32 @@ def main():
         rf_sub_menu()
 
 def svm_sub_menu():
-    st.subheader("SVM")
+    st.subheader("SVM Menu")
 
     # SVM submenu options
     sub_menu = ["Fish", "Fruit"]
     choice = st.sidebar.radio("Select Sub Menu", sub_menu)
 
     if choice == "Fish":
-        if st.button("Run SVM -> Fish"):
-            run_app('RF/Fish/app.py')
+        st.write("You selected SVM -> Fish.")
+        # Add SVM Fish specific content or functionality here
     elif choice == "Fruit":
-        if st.button("Run SVM -> Fruit"):
-            run_app('RF/Fish/app.py')
+        st.write("You selected SVM -> Fruit.")
+        # Add SVM Fruit specific content or functionality here
 
 def rf_sub_menu():
-    st.subheader("Random Forest")
+    st.subheader("Random Forest Menu")
 
     # Random Forest submenu options
     sub_menu = ["Fish", "Fruit"]
     choice = st.sidebar.radio("Select Sub Menu", sub_menu)
 
     if choice == "Fish":
-        if st.button("Run Random Forest -> Fish"):
-            run_app('RF/Fish/app.py')
+        st.write("You selected Random Forest -> Fish.")
+        runpy.run_path('RF/Fish/app.py')
     elif choice == "Fruit":
-        if st.button("Run Random Forest -> Fruit"):
-            run_app('RF/Fish/app.py')
-
-def run_app(app_path):
-    if os.path.exists(app_path):
-        os.system(f'streamlit run {app_path}')
-        st.success(f"Running: {app_path}")
-    else:
-        st.error(f"File not found: {app_path}")
+        st.write("You selected Random Forest -> Fruit.")
+        # Add Random Forest Fruit specific content or functionality here
 
 if __name__ == "__main__":
     main()
