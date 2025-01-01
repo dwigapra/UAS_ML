@@ -1,5 +1,5 @@
 import streamlit as st
-import runpy
+import os
 
 def main():
     # Main menu options
@@ -19,9 +19,9 @@ def svm_sub_menu():
     choice = st.sidebar.radio("Select Sub Menu", sub_menu)
 
     if choice == "Fish":
-        runpy.run_path('RF/Fish/app.py')
+         os.system('streamlit run RF/Fish/app.py')
     elif choice == "Fruit":
-        runpy.run_path('RF/Fish/app.py')
+         os.system('streamlit run RF/Fish/app.py')
 
 def rf_sub_menu():
     st.subheader("Random Forest")
@@ -31,9 +31,9 @@ def rf_sub_menu():
     choice = st.sidebar.radio("Select Sub Menu", sub_menu)
 
     if choice == "Fish":
-        runpy.run_path('RF/Fish/app.py')
+        os.system('streamlit run RF/Fish/app.py')
     elif choice == "Fruit":
-        runpy.run_path('RF/Fish/app.py')e
+        os.system('streamlit run RF/Fish/app.py')
 
 if __name__ == "__main__":
     main()
