@@ -23,10 +23,10 @@ def svm_sub_menu():
 
     if choice == "Fish":
         st.write("You selected SVM -> Fish.")
-        # Add SVM Fish specific content or functionality here
+        run_streamlit_app('RF/Fish/app.py')
     elif choice == "Fruit":
         st.write("You selected SVM -> Fruit.")
-        # Add SVM Fruit specific content or functionality here
+        run_streamlit_app('RF/Fish/app.py')
 
 def rf_sub_menu():
     st.subheader("Random Forest Menu")
@@ -43,9 +43,6 @@ def rf_sub_menu():
         run_streamlit_app('RF/Fish/app.py')
 
 def run_streamlit_app(app_path):
-    """
-    Function to run a Streamlit app using subprocess.
-    """
     if os.path.exists(app_path):
         st.write(f"Running: {app_path}")
         subprocess.Popen(['streamlit', 'run', app_path], shell=True)
