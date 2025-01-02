@@ -1,46 +1,37 @@
 import streamlit as st
-import runpy
 import subprocess
 
+def run_script(script_path):
+    # Menjalankan file Streamlit menggunakan subprocess
+    subprocess.Popen(["streamlit", "run", script_path])
+
 def main():
-    st.title("Main Menu")
+    st.title("Aplikasi Utama")
 
-    # Main menu options
-    menu = ["SVM", "Random Forest"]
-    choice = st.sidebar.selectbox("Select Main Menu", menu)
+    # Menu utama
+    menu = st.sidebar.selectbox("Menu Utama", ["SVM", "Random Forest"])
 
-    if choice == "SVM":
-        svm_sub_menu()
-    elif choice == "Random Forest":
-        rf_sub_menu()
+    if menu == "SVM":
+        st.header("Menu SVM")
+        sub_menu = st.radio("Pilih Dataset:", ["Fish", "Fruit"])
 
-def svm_sub_menu():
-    st.subheader("SVM Menu")
+        if sub_menu == "Fish":
+            if st.button("Buka Fish - SVM"):
+                run_script("SVM/Fish/app.py")
+        elif sub_menu == "Fruit":
+            if st.button("Buka Fruit - SVM"):
+                run_script("SVM/Fruit/app.py")
 
-    # SVM submenu options
-    sub_menu = ["Fish", "Fruit"]
-    choice = st.sidebar.radio("Select Sub Menu", sub_menu)
+    elif menu == "Random Forest":
+        st.header("Menu Random Forest")
+        sub_menu = st.radio("Pilih Dataset:", ["Fish", "Fruit"])
 
-    if choice == "Fish":
-        st.write("You selected SVM -> Fish.")
-        # Add SVM Fish specific content or functionality here
-    elif choice == "Fruit":
-        st.write("You selected SVM -> Fruit.")
-        # Add SVM Fruit specific content or functionality here
-
-def rf_sub_menu():
-    st.subheader("Random Forest Menu")
-
-    # Random Forest submenu options
-    sub_menu = ["Fish", "Fruit"]
-    choice = st.sidebar.radio("Select Sub Menu", sub_menu)
-
-    if choice == "Fish":
-        st.write("You selected Random Forest -> Fish.")
-        subprocess.run(["streamlit", "run", "RF/Fish/app.py"])
-    elif choice == "Fruit":
-        st.write("You selected Random Forest -> Fruit.")
-        # Add Random Forest Fruit specific content or functionality here
+        if sub_menu == "Fish":
+            if st.button("Buka Fish - Random Forest"):
+                run_script("Random Forest/Fish/app.py")
+        elif sub_menu == "Fruit":
+            if st.button("Buka Fruit - Random Forest"):
+                run_script("Random Forest/Fruit/app.py")
 
 if __name__ == "__main__":
     main()
