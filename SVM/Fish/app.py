@@ -12,7 +12,7 @@ with open(model_path, 'rb') as model_file:
     svm_model = pickle.load(model_file)
 
 with open(scaler_path, 'rb') as scaler_file:
-    scaler = pickle.load(model_file)
+    scaler = pickle.load(scaler_file)
 
 # Judul aplikasi
 st.title("Aplikasi Klasifikasi Jenis Ikan")
