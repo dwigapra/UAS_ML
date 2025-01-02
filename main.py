@@ -1,31 +1,44 @@
 import streamlit as st
-import os
-import subprocess
+import runpy
 
-# Judul utama aplikasi
-st.title("Machine Learning Models")
+def main():
 
-# Menu utama: SVM dan Random Forest
-menu = st.sidebar.selectbox("Select Model", ["SVM", "Random Forest"])
+    # Main menu options
+    menu = ["SVM", "Random Forest"]
+    choice = st.sidebar.selectbox("Select Main Menu", menu)
 
-# Sub-menu berdasarkan pilihan model
-if menu == "SVM":
-    sub_menu = st.sidebar.selectbox("Select Dataset", ["Fish", "Fruit"])
-    if sub_menu == "Fish":
-        st.write("Running SVM for Fish...")
-        # Jalankan aplikasi SVM/Fish/app.py
-        subprocess.run(["streamlit", "run", "SVM/Fish/app.py"])
-    elif sub_menu == "Fruit":
-        st.write("Running SVM for Fruit...")
-        # Jalankan aplikasi SVM/Fruit/app.py
-        subprocess.run(["streamlit", "run", "SVM/Fruit/app.py"])
-elif menu == "Random Forest":
-    sub_menu = st.sidebar.selectbox("Select Dataset", ["Fish", "Fruit"])
-    if sub_menu == "Fish":
-        st.write("Running Random Forest for Fish...")
-        # Jalankan aplikasi Random Forest/Fish/app.py
-        subprocess.run(["streamlit", "run", "Random Forest/Fish/app.py"])
-    elif sub_menu == "Fruit":
-        st.write("Running Random Forest for Fruit...")
-        # Jalankan aplikasi Random Forest/Fruit/app.py
-        subprocess.run(["streamlit", "run", "Random Forest/Fruit/app.py"])
+    if choice == "SVM":
+        svm_sub_menu()
+    elif choice == "Random Forest":
+        rf_sub_menu()
+
+def svm_sub_menu():
+    st.subheader("SVM Menu")
+
+    # SVM submenu options
+    sub_menu = ["Fish", "Fruit"]
+    choice = st.sidebar.radio("Select Sub Menu", sub_menu)
+
+    if choice == "Fish":
+        st.write("Kamu memilih SVM -> Fish.")
+        runpy.run_path('SVM/Fish/app.py')
+    elif choice == "Fruit":
+        st.write("Kamu memilih SVM -> Fruit.")
+        runpy.run_path('SVM/Fruit/app.py')
+
+def rf_sub_menu():
+    st.subheader("Random Forest Menu")
+
+    # Random Forest submenu options
+    sub_menu = ["Fish", "Fruit"]
+    choice = st.sidebar.radio("Select Sub Menu", sub_menu)
+
+    if choice == "Fish":
+        st.write("Kamu memilih Random Forest -> Fish.")
+        runpy.run_path('Random Forest/Fish/app.py')
+    elif choice == "Fruit":
+        st.write("Kamu memilih Random Forest -> Fruit.")
+        runpy.run_path('Random Forest/Fruit/app.py')
+
+if __name__ == "__main__":
+    main()
