@@ -1,9 +1,10 @@
 import streamlit as st
-import os
+import subprocess
 
-# Fungsi untuk menjalankan file aplikasi Streamlit
+# Fungsi untuk menjalankan aplikasi Streamlit
 def run_streamlit_app(path):
-    os.system(f"streamlit run {path}")
+    # Menjalankan aplikasi Streamlit sebagai proses baru
+    subprocess.Popen(["python", "-m", "streamlit", "run", path])
 
 # Judul utama
 st.title("Dashboard Model Machine Learning")
