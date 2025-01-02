@@ -1,32 +1,31 @@
 import streamlit as st
+import os
 import subprocess
 
-# Fungsi untuk menjalankan aplikasi Streamlit
-def run_streamlit_app(path):
-    # Menjalankan aplikasi Streamlit sebagai proses baru
-    subprocess.Popen(["python", "-m", "streamlit", "run", path])
+# Judul utama aplikasi
+st.title("Machine Learning Models")
 
-# Judul utama
-st.title("Dashboard Model Machine Learning")
+# Menu utama: SVM dan Random Forest
+menu = st.sidebar.selectbox("Select Model", ["SVM", "Random Forest"])
 
-# Menu utama
-menu = st.sidebar.selectbox("Pilih Model", ["SVM", "Random Forest"])
-
-# Submenu berdasarkan menu utama
+# Sub-menu berdasarkan pilihan model
 if menu == "SVM":
-    submenu = st.sidebar.radio("Pilih Submenu", ["Fish", "Fruit"])
-    if submenu == "Fish":
-        if st.button("Jalankan SVM Fish"):
-            run_streamlit_app("SVM/Fish/app.py")
-    elif submenu == "Fruit":
-        if st.button("Jalankan SVM Fruit"):
-            run_streamlit_app("SVM/Fruit/app.py")
-
+    sub_menu = st.sidebar.selectbox("Select Dataset", ["Fish", "Fruit"])
+    if sub_menu == "Fish":
+        st.write("Running SVM for Fish...")
+        # Jalankan aplikasi SVM/Fish/app.py
+        subprocess.run(["streamlit", "run", "SVM/Fish/app.py"])
+    elif sub_menu == "Fruit":
+        st.write("Running SVM for Fruit...")
+        # Jalankan aplikasi SVM/Fruit/app.py
+        subprocess.run(["streamlit", "run", "SVM/Fruit/app.py"])
 elif menu == "Random Forest":
-    submenu = st.sidebar.radio("Pilih Submenu", ["Fish", "Fruit"])
-    if submenu == "Fish":
-        if st.button("Jalankan Random Forest Fish"):
-            run_streamlit_app("Random Forest/Fish/app.py")
-    elif submenu == "Fruit":
-        if st.button("Jalankan Random Forest Fruit"):
-            run_streamlit_app("Random Forest/Fruit/app.py")
+    sub_menu = st.sidebar.selectbox("Select Dataset", ["Fish", "Fruit"])
+    if sub_menu == "Fish":
+        st.write("Running Random Forest for Fish...")
+        # Jalankan aplikasi Random Forest/Fish/app.py
+        subprocess.run(["streamlit", "run", "Random Forest/Fish/app.py"])
+    elif sub_menu == "Fruit":
+        st.write("Running Random Forest for Fruit...")
+        # Jalankan aplikasi Random Forest/Fruit/app.py
+        subprocess.run(["streamlit", "run", "Random Forest/Fruit/app.py"])
